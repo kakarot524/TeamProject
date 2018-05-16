@@ -1,14 +1,1 @@
-sup
-<<<<<<< HEAD
-this is a test - mark wrote this
-=======
-This is from master
-this is a test - mark wrote this
-
-
-this is from the branch - mark
-
-this is from the branch - Jorge
-
-this is from the branch - Tim
->>>>>>> edcbd3462e6e10f0ed3151719a6f9fba4d355855
+This is a change from home

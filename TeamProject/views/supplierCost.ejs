@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css" />
+</head>
+
+
+<body>
+	<table>
+		<tr>
+			<th>Supplier</th>
+			<th>Total Cost</th>
+		</tr>
+
+		<% if(inventoryCost.length)
+			{
+				for(var j = 0; j < inventoryCost.length; j++)
+				{ %>
+					<tr>
+						<td><%= inventoryCost[j].supplier_name %></td>
+						<td>$<%= inventoryCost[j].total_inventory_value %></td>
+					</tr>
+				<%}//end for
+			}//end if
+			else
+			{ %>
+				There is no inventory
+			<%} %>
+	</table>
+</body>
+</html>

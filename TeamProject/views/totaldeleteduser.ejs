@@ -1,0 +1,46 @@
+<!Doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css" />
+	</head>
+	<body>
+		<h1>Number of Deleted Users</h1>
+		<p>These are the users they where deleted.</p>
+
+		<table>
+
+			<tr>
+				<th> username </th>
+				<th>First Name </th>
+				<th>Last Name </th>
+				<th>Email</th>
+				<th>Position</th>
+				<th>Date set Inactive</th>
+			
+		
+			</tr>
+
+
+			<% if(data.length){
+
+				for(var i = 0; i < data.length; i++){%>
+		
+			<tr>
+				<td><%= data[i].user_username %> </td>
+				<td><%= data[i].user_fname %></td>
+				<td><%= data[i].user_lname %></td>
+				<td><%= data[i].user_email %></td>
+				<td><%= data[i].role_position %></td>
+				<td><%= data[i].login_modified %></td>
+			</tr>	
+			<% }
+			}else{ %>
+			<h1>There are no Users.</h1>
+			<% } %>
+
+
+		</table>
+	</body>
+
+
+</html>

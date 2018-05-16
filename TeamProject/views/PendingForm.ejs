@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Account Registration</title>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/register.css"/>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <style >
+    body {
+    background: url(http://ft7q323msjfk2hgf49jihjgw.wpengine.netdna-cdn.com/wp-content/uploads/2015/03/Warehouse-background-image_low-res_gradient-750x486.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+    .box{
+      background-color: #2C3539;
+      color: #fff;
+      padding: 5px 5px;
+      font-family:new century schoolbook;
+      font-size: 20px;
+    }
+    *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+ 
+    body, html, .register_form{
+    height: 100%;
+    }
+    .register_form {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: center;
+    -moz-box-flex: center;
+    -webkit-flex: center;
+    -ms-flex: center;
+    flex: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-align-items: center;
+    }
+    form {
+    background: #262626;
+    padding: 2em 1em;
+    font-family: helvetica, sans-serif;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top:90px;
+    margin-left: 400px;
+    }
+    form label {
+  color: #fff;
+  margin: 0 3% .25em;
+  display: block;
+  font-family: helvetica, sans-serif;
+  text-align: left;
+}
+form input {
+  width: 100%;
+  padding: .7em .75em;
+  margin: 0 1% 1em;
+  font-size: 1.2em;
+  border: 2px solid #000;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+form button {
+  width: 40%;
+  margin: 1em 3% 0;
+  border: none;
+  background: #2B65EC;
+  padding: 0.5em 0;
+  font-size: 1.25em;
+  clear: both;
+  color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+  </style>
+  
+</head>
+<body>
+      <div class="box">
+  <img src="http://static1.squarespace.com/static/53b9e922e4b0cdea486fc7ca/t/53c344dae4b0fb85d4199a8f/1405306076935/icon-4-track.png" width="60px"/><b>Wipro IMS</b>
+   <h4><center>Welcome Back Pending User</center></h4>
+  </div>
+  <% if(data.length){
+for(var i = 0; i < data.length; i++){%>
+<h2 style="color:blue; font-size:20px"><b>Please fill out the below form to Confirm Your Account</b></h2>
+  <table>
+    <tr>
+      <th>
+  <div class="register_form">
+    <section class="register_wrapper">
+      <form method= "post" action="/addPendingUserInfo">
+             <input type="hidden" name="user_id" value="<%= data[i].user_id %>"/>
+      <label for="username">Address</label>
+       <input type="text" placeholder="Enter a valid address" required name = "address"/>
+      <label for="password">City</label>
+      <input type="text" placeholder="Enter a valid city" required name = "city"/>
+      <label for="Re-type password">State</label>
+      <input type="text" placeholder="Enter a valid state" required name = "state"/>
+      <label for="firstname">Zip</label>
+      <input type="text" placeholder="Enter a valid zip" required name = "zip"/>
+      <label for="lastname">Phone</label>
+       <input type="text" placeholder="Enter your phone" required name = "phone"/>  
+       <table>
+                    <tr>
+                        <!--<td>
+                             <label for="SecurityQuestion1">Security Question 1</label> 
+                        </td>-->
+                        <td>
+                             <select required name ="SecurityQuestion1" id="SecurityQuestion">
+                             
+                            <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+                            <option value="What is the street you grew up on?">What is the street you grew up on?</option>
+                            <option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+                            <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                            <option value="What city did you grow up in?">What city did you grow up in? </option>
+                            </select>
+                        </td>
+                        <td><br><br>
+                            <input type="text" required name = "SecurityAnswer1" id="SecurityAnswer1" style="margin-left:-300px; width:360px"  />
+                        </td>
+                    </tr>
+                    <tr>
+                        <!--<td>
+                             <label for="SecurityQuestion2">SecurityQuestion2</label> 
+                        </td>-->
+                        <td>
+                                <select id="SecurityQuestion2" required name ="SecurityQuestion2" style="margin-left:10px">
+               
+                    <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+                    <option value="What is the street you grew up on?">What is the street you grew up on?</option>
+                    <option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                    <option value="What city did you grow up in?">What city did you grow up in? </option>
+                </select>
+                        </td>
+                        <td><br><br>
+                             <input type="text" required name = "SecurityAnswer2" id="SecurityAnswer2" style="margin-left:-300px; width:360px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <!--<td>
+                             <label for="SecurityQuestion3">Security Question 3</label> 
+                        </td>-->
+                        <td>
+                             <select id="SecurityQuestion3" required name ="SecurityQuestion3">
+                    
+                    <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+                    <option value="What is the street you grew up on?">What is the street you grew up on?</option>
+                    <option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                    <option value="What city did you grow up in?">What city did you grow up in? </option>
+                </select>
+                        </td>
+                        <td><br><br>
+                              <input type="text" required name = "SecurityAnswer3" id="SecurityAnswer3" style="margin-left:-300px; width:360px" />
+                        </td>
+                    </tr>
+                </table>
+            
+         <p>
+                            <button class="btn btn-success" style="background-color: lime-green; height:40px; width:250px; color:white; font-size:20px; align-content:center;" type="submit">Complete Registration</button>
+                        </p>
+           </form> 
+    </section>
+  </div>
+</th>
+</tr>
+</table>
+<% }
+}else{ %>
+No User
+<% } %>
+</body>
+</html>

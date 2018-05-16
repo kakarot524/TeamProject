@@ -1,0 +1,113 @@
+
+.reggieForm {
+  background-color: black; 
+  height:80px;
+  width:180px;
+  color: white;
+  padding: 20px;
+  font-size: 150%;
+  -webkit-border-radius:5px; 
+  border-radius:5px;
+  text-align:center;
+  display: inline-block;
+  
+  padding:5px; 
+  margin:5px; 
+  border: 1px solid black;
+  display:table;
+	
+}
+
+.reggieForm input, .reggieForm textarea {
+    background-color: #d1d1d1;
+	width: 500px;
+	height: 50px;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	padding: 10px;
+	-webkit-border-radius:10px; 
+	font-size: 1em;
+	color: black;
+	transition: border 0.5s;
+	-webkit-transition: border 0.5s;
+	-moz-transition: border 0.5s;
+	-o-transition: border 0.5s;
+	border: solid 3px blue;	
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+}
+.reggieForm input:focus, .reggieForm textarea:focus{
+	border: solid 3px white;	
+}
+
+.reggieForm textarea{
+	height: 100px;	
+	resize: none; 
+	overflow: auto;
+}
+.reggieForm input[type="submit"]{
+	background-color: grey;
+	color: white;
+	height: 50px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 1.25em;
+    clear: both;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+
+.reggieForm input[type="submit"]:hover{
+	background-color: blue;
+	
+}
+
+.reggieForm textarea{
+	height: 100px;	
+	resize: none; 
+	overflow: auto;
+}
+
+.reggieForm input[type="number"] {
+   width:75px;
+   background-color: black;
+	color: white;
+	height: 50px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 1.29em;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+
+.reggieForm input[type="number"]{
+	border: solid 3px black;	
+}
+
+.reggieForm button{
+	background-color: grey;
+	color: white;
+	height: 50px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 1.29em;
+	-webkit-transition: background-color 0.5s;
+	-moz-transition: background-color 0.5s;
+	-o-transition: background-color 0.5s;
+	transition: background-color 0.5s;
+}
+
+.reggieForm button:hover{
+	background-color: blue;
+	
+}
+
+
+

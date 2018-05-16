@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html> 
+  <head> 
+	
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+	 <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    .intro {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 20px 20px;
+    font-family: Montserrat, sans-serif;
+    text-align:center;
+}
+    .login{
+     width:50%;
+     height:50%;
+     
+     margin:0 auto;
+    }
+    .imgicon {
+     text-align:center;
+    margin: 6px 0 6px 0;
+    margin-left:50px;
+    margin-top:-20px;
+    }
+    img.avatar {
+    width: 70%;
+    border-radius: 80%;
+    right:20%;
+    text-indent:20px;
+    }
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: left;
+    margin-top: -20px;
+    line-height:2em;
+}
+input {
+  display: inline-block;
+  float: left;
+  width:400px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  
+  
+  margin-bottom: 16px;
+  line-height:2em
+}
+
+/*Style the submit button */
+input[type=submit] {
+
+    background-color: grey;
+    color: white;
+    width:160px;
+    height:50px;
+
+}
+</style>
+	</head>
+  
+  <body>
+    <div class="intro">
+              <h1><center>Wipro Inventory Management System</center></h1>
+              <h4><center>User Login</center></h4>
+              </div>
+    
+     <table align="center">
+      <tr>
+        <th>
+
+	   <div class="login">
+      <div class="imgicon">
+                <img src="http://churchinperth.com/ChurchesWA/wp-content/uploads/2015/04/gfx-person-icon.png" alt="Avatar" class="avatar">
+                </div>
+  		  <form method="post" action="/MainMenu">
+          <p >
+    		    <label for="username">Username</label>
+    		    <input type="text" id="username" placeholder="Enter your username" name="username" size="35"required><br>
+          </p>
+          <p>
+    		    <label for="password">Password</label>
+    		    <input type="password" id="password" placeholder="Enter your password" name="password" size="35"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    			</p>
+          <p>
+    		    <input type="submit" value="Login" >
+            <!--<input type="checkbox" checked="checked"> Remember me-->
+          </p>
+          
+  		  </form>
+        <p>
+        <form action="/">
+        <input type="submit" value="Back"/>
+        <a href="forgetpasswordpractice.ejs" class="forget-password"> <u>Forget Password</u></a>
+
+        </form> 
+        </p>
+	   </div>
+   	 </th>
+     </tr>
+    </table>		
+
+</body>
+</html>
+
+

@@ -1,0 +1,106 @@
+<html>
+  <head>
+
+	<style>
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #c0c0c0;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 50%;
+			-webkit-border-radius:15px; 
+			border-radius:15px;
+		}
+
+		/* The Close Button */
+		.close {
+			color: black;
+			float: right;
+			font-size: 50px;
+			font-weight: bold;
+			margin-top: -15px;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	
+  </head>
+  
+  <body>
+  
+	<center><h3 style="text-align:center; right:20px; text-transform:uppercase"> Add Stock to <%= tableName %>  </h3><br></center>
+	<center>
+	<div style=" text-align:left; background-color:#c0c0c0; color:black; border:none;" class="reggieForm">
+		
+	<form method= "post" action="/addStock" id="reggieForm" >   
+
+		<% var field;
+		
+		if(obj.length){ %>
+		
+		<% for (var keys = 2;keys < obj.length; keys++) { 
+			if(keys < obj.length -3) { 
+			
+				if(keys == 2) { %>
+					 <p style="float:right;" >name: 
+                        <input style="background-color:white;" type="text" required name = "field<%= keys %>"/>
+                  </p>
+				<% } else if(keys == obj.length -4) { %>
+						<p style="float:right;">stock count: 
+                        <input style="background-color:white;" type="text" required name = "field<%= keys %>"/>
+                  </p>		
+				<% } else {	%>
+				 <p style="float:right;" >
+                  <%= obj[keys].COLUMN_NAME %>: 
+                        <input style="background-color:white;" type="text" required name = "field<%= keys %>"/>
+                  </p>
+					
+			<% }//elseif
+				} else { 
+				if(keys == obj.length -3) { %>
+			
+			<p style="margin-top:20px; float:left;">stock supplier: 
+				<select style="color:black;" required name = "field<%= keys %>">
+					<% 
+					
+					for(var j = 0; j < obj1.length; j++){ %>
+			
+						<option value="<%= obj1[j].supplier_id %>"> <%=obj1[j].supplier_name %> </option>
+				
+					<% }//for
+					}//if %> 
+				</select></p>
+			<% }//elseif		
+			}//for
+		}//else %>
+					  
+				<input type="hidden" required name ="num" value= <%= obj.length%> />
+				<input type="hidden" required name ="id" value="<%= tableName %>" />
+			<p>
+				<input style="float:right;" type="submit" value="Add Stock"/>
+			</p>
+		</form>
+	</div>
+	</center>
+  <body>
+  
+</html>

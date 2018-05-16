@@ -1,0 +1,27 @@
+{
+  "name": "teamproject",
+  "version": "1.0.0",
+  "description": "Invenotry Management System",
+  "main": "connection.js",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "client-sessions": "^0.8.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakarot524/TeamProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakarot524/TeamProject/issues"
+  },
+  "homepage": "https://github.com/kakarot524/TeamProject#readme"
+}

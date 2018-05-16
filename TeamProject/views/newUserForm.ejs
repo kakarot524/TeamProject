@@ -1,0 +1,61 @@
+<html> 
+        <head> 
+        </head>
+        
+        <body>
+		<center>
+		<div style="margin-left:10px; text-align:left; background-color:#c0c0c0; color:black; border:none;" class="reggieForm">
+	<h3 style="font-weight:bold;"> ADD User </h3>
+              <form method= "post" action="/addUser" >
+
+                <p style="font-weight:bold;">
+                        Username:</p><p>
+                        <input style="background-color:white;" type="text" required name = "username"/>
+                        </p>
+                        <p style="font-weight:bold;">
+                        Password:</p><p>
+                        <input style="background-color:white;" type="password" required name = "password"/>
+                        </p>
+                       <p style="font-weight:bold;">
+                        First Name:</p><p>
+                        <input style="background-color:white;" type="text" required name = "fname"/>
+                        </p>
+                        <p style="font-weight:bold;">
+                        Last Name:</p><p>
+                        <input style="background-color:white;" type="text" required name = "lname"/>
+                        </p>
+                        <p style="font-weight:bold;">
+                        Email:</p><p>
+                        <input style="background-color:white;" type="text" required name = "email"/>
+                        </p>
+                       <!-- Removing this to set default account--> 
+                       <p style="font-weight:bold; margin-top:30px;">
+                        Role:</p><p>
+                        <select name="role_id">
+                        <% if(data1.length){
+                        for(var i = 0; i < data1.length; i++){%>
+                        <option value="<%= data1[i].role_id %>"> <%= data1[i].role_position %> </option>
+                       <% } %>
+                        </select>
+                      <%
+                      }else{ %>
+                      <h1> No Roles</h1>
+                    <% } %>
+
+                        </p> 
+                        <p>
+                            <button style="width:100%;" type="submit">Sign UP</button>
+                            <%= msg %>
+                        </p>
+                       
+                </form>
+
+
+                          <!--  <p><form action="managerMenu#!/displayUsers">
+                               <input type="submit" value="back"/>
+                            </form> 
+                        </p>     -->
+               </div>
+			   </center>
+        </body>
+      </html>

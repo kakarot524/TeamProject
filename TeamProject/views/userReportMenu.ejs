@@ -1,0 +1,181 @@
+<!Doctype html>
+	<html>
+		<head>
+			
+			<meta charset="utf-8">
+  
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+               <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+                <!--for pie charts -->
+                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		</head>
+
+	<body ng-app="userReportMenu">
+            <%include partial/mainNavBar%>
+
+		<div style="margin-left: 250px;margin-top: -350px">
+			<h2 style="font-family: Montserrat, sans-serif; font-size:25px; font:bold"><center>User Report</center></h2>
+            <br><br>
+     		
+     		<div class= "container" >
+     			<div class="row">
+     				<div class="col-xs-4">
+                       <!-- <div class="big-box"></div> -->
+                       <div class="big-box">
+     					<div id="barchart"></div>
+                       </div>
+     				</div>
+
+     				<div class="col-xs-7" style="text-align: center">
+     					<div class="row">
+
+     						<div class="col-xs-6" >
+                                <div class="mini-box btn btn-success" style="background-color:black; height:80px;width:180px ;margin-left:200px;font-size:40px">
+                                    <%= numOfUsers.length %>
+                                    <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" href="#!TotalUsers">Total Users</a></p>
+                                    
+                                    <!--<%= numOfUsers.length %>-->
+                            </div>
+                            </div>
+
+     						<div class="col-xs-6">
+                                <div class="mini-box btn btn-success" style="background-color:grey; height:80px;width:180px;font-size:40px">
+                                    <%= numOfManagers.length %>
+                                    <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" title="Manager" href="#!Manager">Number of Managers</a></p><br>
+                                    <!--<%= numOfManagers.length %>-->
+                                </div>
+                            </div>
+
+     						<div class="col-xs-6">
+                                <div class="mini-box btn btn-success" style="background-color:grey; height:80px;width:180px;margin-top:10px;margin-left:200px;font-size:40px">
+                                     <%= numOfEmployees.length %>
+                                    <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" href="#!Employee">Number of Employee
+                                    </a></p><br>
+                                    <!--<%= numOfEmployees.length %>-->
+                                </div>
+                            </div>
+
+     						<div class="col-xs-6">
+                                <div class="mini-box btn btn-success" style="background-color:#c0c0c0; height:80px;width:180px;margin-top:10px;font-size:40px">
+                                    <%= numOfNewUsers.length %>
+                                    <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" href="#!Newuser">Number of new users</a></p><br>
+                                    <!--<%= numOfNewUsers.length %>-->
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="mini-box btn btn-success" style="background-color:#c0c0c0;height:80px;width:180px;margin-top:10px; margin-left:200px;font-size:40px">
+                                    <%= numOfPendingUsers.length %>
+                                    <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" title="PendingUsers" href="#!Pending">Number of pending users</a></p><br>
+                                    <!--<%= numOfPendingUsers.length %>-->
+                                </div>
+                            </div>
+
+     						<div class="col-xs-6">
+
+                                <div class="mini-box btn btn-success" style="background-color:black; height:80px;width:180px;margin-top:10px;font-size:40px">
+                                    <%= numOfDeletedUsers.length %>
+                                     <p style="margin-top:-5px; font-size:15px ; color:white;"><a style="color:white; font-size:15px; text-decoration:none;" title="Deleted" href="#!Deleted">Number of deleted users</a></p> <br>
+                                    
+
+                                </div>
+                            </div>
+     					</div>
+
+     				</div>
+
+				</div>
+
+     		</div>
+            
+            <br><br>
+
+     		<div  class="col-lg-12 col-sm-8 col-md-8 col-xs-12" ng-view=""></div>
+
+        </div>
+
+            <footer class="container-fluid text-center">
+                <a href="#myPage" title="To Top">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+                 <p>Created By WIPRO IMS Team</p>
+            </footer>
+
+            <script type="text/javascript">
+                // Load google charts
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                // Draw the chart and set the chart values
+                function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                        ['Role', 'Number of Individuals'],
+                        ['Manager', <%= numOfManagers.length %>],
+                        ['Employees', <%= numOfEmployees.length %>],
+                        ['pending employees', <%= numOfPendingUsers.length %>],
+                        ['New employees', <%= numOfNewUsers.length %>],
+                       
+                    ]);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = {'title':'Employee Demographics', 'width':500, 'height':350 , is3D: true,
+};
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('barchart'));
+                chart.draw(data, options);
+                }
+            </script>
+
+            <script>
+                var app = angular.module("userReportMenu", ["ngRoute"]);
+                app.config(function($routeProvider) {
+                $routeProvider
+
+                    .when("/TotalUsers", {
+                        templateUrl : "totalusers"
+                    })
+                    .when("/Manager", {
+                        templateUrl : "totalmanager"
+                        
+                    })
+                    .when("/Employee", {
+                        templateUrl : "totalemployee"
+                        
+                    })
+                    .when("/Newuser", {
+                        templateUrl : "totalnewuser"
+                        
+                    })
+                    .when("/Pending", {
+                        templateUrl : "totalpendinguser"
+                        
+                    })
+                    .when("/Deleted", {
+                        templateUrl : "totaldeleteduser"
+                        
+                    })
+                    .otherwise({
+                        templateUrl:"totalusers"
+                    })
+
+
+                });
+            </script>
+
+
+
+            
+
+            
+
+        </body>
+
+
+
+	</html>

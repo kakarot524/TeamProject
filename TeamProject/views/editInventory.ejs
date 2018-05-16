@@ -1,0 +1,92 @@
+<html>
+ <head>
+  
+  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+  </head>
+  
+  <body>
+
+	<%include partial/mainNavBar%>
+  	 <div style="margin-left: 250px;margin-top: -350px">
+
+	  <br><br><br>
+		<center><h1 style="text-align:center; right:20px; text-transform:uppercase"> Edit </h1><br></center>
+		
+		
+	<p style="color:red"><%= emess %></p>
+	<center><div class="reggieForm">
+			<form method="post" action="/editInventory">
+
+			<% var field;
+				var field1;
+				var i = 0;
+			if(obj1.length){ 
+				for(key = 0; key < obj.length; key++) {
+					field = obj[key];
+					for(var keys in field) { 
+						field1 = field[keys];
+							if((i >= 2) && (i < obj1.length - 3)) {
+	
+								if(i == 2) { %>
+									<div><p style="float:left;">name: </p>
+									<p><input type="text" required name="field<%= i %>" value="<%= field[keys] %>"> </td></tr>	
+							</p></div>
+							<% } else if(i == obj1.length -4) { %>
+									<div><p style="float:left;">stock count: </p>
+									<p><input type="text" required name="field<%= i %>" value="<%= field[keys] %>"> </td></tr>	
+							</p></div>
+							<% } else {
+							%>
+					
+							<div><p style="float:left;"><%= obj1[i].column_name %>: </p>
+									<p><input type="text" required name="field<%= i %>" value="<%= field[keys] %>"> </td></tr>	
+							</p></div>
+						
+						<% }//elseif
+						
+						}//if 
+						if(i == obj1.length - 3){ %> 
+					
+					<br><div>	<p style="float:left;"> Supplier: <select style="color:black;" required name = "field<%= i %>">
+								<% for(var j = 0; j < obj2.length; j++){%>
+			
+									<option value="<%= obj2[j].supplier_id %>"> <%=obj2[j].supplier_name %> </option>
+				
+								<% }//for %> 
+							</select></p></div>
+							
+						<% }//if
+						i++
+					}//for
+			
+				}//for 
+			
+			} else { %>
+			
+				Nothing
+			
+			<% }//elseif %>
+
+				<tr><td><input type="hidden" required name="name" value="<%= name %>"></td></tr>
+				<tr><td><input type="hidden" required name="id" value="<%= id %>"></td></tr>
+				<tr><td><input type="submit" value="Update"></td></tr>
+			
+			</form>
+		</div>
+		</center>
+		
+	<%include partial/mainFooter%>
+	</div>
+	</body>
+	</html>

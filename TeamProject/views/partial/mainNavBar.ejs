@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	  <meta charset="utf-8">
+	  
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	  <link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+	 <style>
+    footer{
+      margin-top:200px;
+    } 
+   </style>
+  </head>
+
+  <body>
+
+  <div class="box">
+  <img src="http://static1.squarespace.com/static/53b9e922e4b0cdea486fc7ca/t/53c344dae4b0fb85d4199a8f/1405306076935/icon-4-track.png" width="60px"><b>Wipro IMS<b>
+   
+<center><h3 style="font-size: 1.5rem;">Manager Portal</h3></center>
+    <div>
+      <a style="float:right; margin-top:-30px;" href="/" data-toggle="tooltip" title="Logout"><span style="font-size:30px; color:white" class="glyphicon glyphicon-log-out"></span></a>
+    </div>
+  </div>
+  <br>
+          <div class="col-md-3 col-sm-4 col-lg-2">
+                <div class="left-navigation"  >
+                    
+                      <ul class="nav" id="side-menu" style="margin-top:-80px">
+                  
+                  
+                  <li style="padding: 70px 0 0">
+                        <a href="/managerMenu#!/dashboard" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color:black"></i>Dashboard</a>
+                    </li>
+                        <li class="list">
+                            <div style="cursor: pointer;" class="dropdown">
+                                <i style="font-weight: bold;" href="" class="fa fa-cubes" aria-hidden="true"></i>Manage Inventory 
+                            </div>
+                            <ul class="submenu hide">
+                                <li><a href="/createInventory">Add Inventory</a></li>
+                                <li><a href="/viewinventoryTables">Update Inventory</a></li>
+                                <li><a href="/inventoryToDelete">Delete Inventory</a></li>
+                                
+                            </ul>
+                        </li>
+
+                        <li><i class="fa fa-users" aria-hidden="true"><a href="/managerMenu#!/Users" style="color: black">Manage Users</a></i></li>
+                        <li><i class="fa fa-truck" aria-hidden="true"> <a href="/managerMenu#!/SupplierDetails" style="color: black">Suppliers Details  </a></i></li>
+                        <li class="list">
+                            <div style="cursor: pointer;" class="dropdown">
+                                <i class="fa fa-line-chart" aria-hidden="true"></i>Reports
+                            </div>
+                            <ul class="submenu hide">
+                                <li><a href="/userReportMenu">User Report</a></li>
+                                <li><a href="/inventoryReportMenu">Inventory Report</a></li>
+                                <li><a href="/supplierReportMenu"> Supplier Report</a></li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li style="padding: 70px 0 0">
+                        <a href="/managerMenu#!/aboutme" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-user" aria-hidden="true" style="color:black"></i>About Me</a>
+                        </li>
+                        <li>
+                        <a href="/managerMenu#!/Help" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-question-circle" aria-hidden="true" style="color:black"></i>Help</a>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+              <div id="page-wrapper">
+            <div class="container-fluid" >
+                <div class="row bg-title">
+                 
+                    <div class="col-lg-10 col-sm-8 col-md-8 col-xs-12" style="margin-top: 10px">
+                        <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" style="color:white; background-color: blue">Welcome <%= user %></a>
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                        </ol>
+
+                    
+              </div>
+           
+        </div>
+        <script>
+              window.onload=function(){
+$('.dropdown').click(function(){
+$(this).siblings(".submenu").toggleClass('hide');
+});
+}
+            </script>
+
+            
+
+
+            </body>
+</html>

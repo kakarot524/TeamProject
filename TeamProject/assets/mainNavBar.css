@@ -1,0 +1,32 @@
+.box-one {
+background: #f4511e;
+padding:24px 20px; 
+font-family: Montserrat, sans-serif;
+text-align:center;
+color: #ffffff;
+}
+
+h1 { 
+    display: block;
+    margin-top:-60px;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+}
+h4{
+	display:block;
+	margin-top:-20px;
+	margin-right:200px;
+
+}
+img.logo{
+	margin-top:-100px;
+}
+
+footer{
+	margin-top:400px;
+}
+
+/*
+script.h1{
+	padding-bottom:2px;
+}*/

@@ -1,0 +1,196 @@
+<html>
+  <head>
+	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+	
+	<style>
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: black;
+			color: black;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 50%; 
+			-webkit-border-radius:15px; 
+			border-radius:15px;
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	
+	</head>
+
+
+  <body id="reggiebody">
+  
+  <%include partial/employeeNavbar%>
+  
+  <div style="margin-left: 250px;margin-top: -350px">
+
+  
+   <br><br><br>
+		<center><h1 style="color:white; text-align:center; right:20px; text-transform:uppercase"> create stock </h1><br></center>
+	
+	<center>
+		<div class="reggieForm">
+	<p style='color:red'><%= emess %></p>
+	<form method="post" action="/employeeCreateInventory" id="reggieForm">
+		<p>
+			Stock Name:</p><p>
+			<input type="text" required name="stock"/>
+		</p>
+		<p>
+			Desrciption: </p><p>
+			<textarea required name="Desrciption" form="reggieForm" rows="4" cols="50"></textarea>
+		</p>
+		<p>
+			Number of extra fields:
+			<input type="number" required name = "field" id="field" min="0" max="5" value="0" onClick="addFields()">
+        </p>
+   
+		<div id="container"></div>
+		
+		<!-- Add Stock Button -->
+		<div id="myModal" class="modal">
+
+		  <!-- Add button content -->
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+				<p>Do you want to add inventory now? </p>
+				<button class="reggieLink" type="submit" required name ="add" value="addyes" formmethod="post" formaction="/employeeAddStockPage">Yes</button>
+				<button class="reggieLink" type="submit" required name ="add" value="addno">No</button>
+				<!-- <button class="reggieLink" type="submit" formmethod="get" formaction="/addStockPage">No</button> -->
+		  </div>
+		</div>
+		
+		</form>
+		
+
+		<button id="myBtn" class="reggieForm" style='float: left;'>Create</button>
+	
+		</div>
+			<p style="align:left; font-weight: bold;">Price, Stock Count, and Supplier fields are auto created.</p>
+
+			<br><br>
+			
+  					<H1>Created By WIPRO IMS Team</H1>
+		
+	</center>
+
+
+
+	</div>
+		
+	<script>// Get the modal
+		var modal = document.getElementById('myModal');
+		
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		
+		// When the user clicks on the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}//btn
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}//span
+		
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+				
+			}//if
+			
+		}//windown
+		
+	</script>
+	
+	
+	
+	<script type='text/javascript'>
+        function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("field").value;
+            
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }//while
+            if(number <= 5){
+                for (i=0;i<number;i++){
+                    // Append a node with a random text
+                    container.appendChild(document.createTextNode("Field " + (i+1) + ":"));
+					container.appendChild(document.createElement("br"));
+                    // Create an <input> element, set its type and name attributes
+                    var input = document.createElement("input");
+                    input.type = "text";
+                    input.name = "field" + (i + 1);
+                    container.appendChild(input);
+                    // Append a line break 
+                    container.appendChild(document.createElement("br"));
+                }//for
+				
+				var num = document.createElement("num");
+                    num.type = "text";
+                    num.name = "num";
+					num.value = number;
+                    container.appendChild(num);
+            }//if
+            else{
+                
+                
+            }//elseif
+        }//fields
+
+    </script>
+	
+
+
+	
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+	
+</head>
+
+
+
+<body>
+	<p>These Users have not completed their account</p>
+	<div class="col-lg-12 text-center">
+    <table>
+
+	<tr>
+		<th> Id </th>
+		<th>user </th>
+		<th>pword </th>
+		<th>fname </th>
+		<th>lname </th>
+		<th>email </th>
+		<th>role </th>
+		<th>action</th>
+	</tr>
+
+
+	<% if(data.length){
+
+	for(var i = 0; i < data.length; i++){%>
+
+	<tr>
+		<td><%= data[i].user_id %></td>
+		<td><%= data[i].user_username %></td>
+		<td><%= data[i].user_password %></td>
+		<td><%= data[i].user_fname %></td>
+		<td><%= data[i].user_lname %></td>
+		<td><%= data[i].user_email %></td>
+		<td><%= data[i].role_position %></td>
+		<td><a href="/editPendingUser?id=<%= data[i].user_id %>"><span name="edit" class="glyphicon glyphicon-edit"></span></a>
+			<a href="/deleteUser?id=<%= data[i].user_id %>"><span class="glyphicon glyphicon-trash"></span></a></td>
+	</tr>	
+	<% }
+	}else{ %>
+	<br>
+	<h1>There are no Pending Users.</h1>
+	<% } %>
+
+
+
+	 
+
+
+		
+
+	</table>
+	</div>
+
+	<br><br>
+	<div>
+		 <p>
+			<form action="managerMenu#!/displayUsers">
+			   <input type="submit" class="btn btn-success text-center" id="myBtn"style="margin-left:10px; color:white; text-align:center; right:20px; background-color: #4169e1; font-size:18px;" value="back"/>
+			</form> 
+		</p> 
+	</div>
+</body>
+
+</html>

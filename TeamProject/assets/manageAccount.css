@@ -1,0 +1,44 @@
+.intro {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 20px 24px;
+    font-family: Montserrat, sans-serif;
+    text-align:center;
+    margin-top:auto;
+}
+
+p {
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+   
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: left;
+    line-height:2em;
+}
+input {
+  display: inline-block;
+  float: left;
+  width:350px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+
+}
+
+/*Style the submit button */
+input[type=submit] {
+
+    background-color: grey;
+    color: white;
+    width:160px;
+    height:40px;
+    margin-top:-10px;
+    text-align:center;
+    padding:5px;
+
+}

@@ -1,0 +1,54 @@
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+  </head>
+  
+  <body>
+
+		<%include partial/mainNavBar%>
+
+		<div style="margin-left: 250px;margin-top: -350px">
+
+		<h1 style="font-size:1.5rem; text-align:center; right:20px; text-transform:uppercase"> select inventory to delete </h1>
+		<br>
+		<center style="margin-left:75px">
+			<div class="wrapper1">
+				<% if(data.length) { 
+				for(var i = 0; i < data.length; i++) { %>
+				
+
+				<a href="/deleteTable?id=<%= data[i].table_name %>" style="text-decoration:none;" onclick="return confirm('Are you sure?')">
+
+				<div class="grow" style="border: 2px solid blue; background-color: black; color:white; text-transform:uppercase; font-size: 20px;">
+
+					<p style="margin-bottom:10px;"><%= data[i].table_name %></p>
+					<i style="color:white; font-size:30px;" class="fa fa-trash"></i>
+
+				</div>
+				</a>
+				
+				<% }//for
+			} else { %>
+			
+				No Tables in Database
+				
+			<% } //end else %>
+
+
+
+			</div></center>
+	<%include partial/mainFooter%>
+	</div>
+
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<html>
+  <head>
+
+	<% include partial/mainNavBar.ejs %>
+	 <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	<link rel="stylesheet" type="text/css" href="../assets/manageAccount.css" />
+	
+	<style>
+	th {
+		background-color:black;
+	}
+	</style>
+	
+  </head>
+
+  <body>
+  
+	<div style="margin-left:250px;margin-top: -350px">	
+	<center>
+	<h3>Edit Supplier Form</h3></center>
+	
+	<table>
+
+	   <tr>
+		<th> Id </th>
+		<th>Name </th>
+		<th>Address </th>
+		<th>City </th>
+		<th>State </th>
+		<th>Zip </th>
+		<th>Phone </th>
+		<th>Email</th>
+		
+		</tr>
+
+
+			<% if(data.length){
+
+			for(var i = 0; i < data.length; i++){%>
+			
+			<tr>
+				<td><%= data[i].supplier_id %></td>
+				<td><%= data[i].supplier_name %></td>
+				<td><%= data[i].supplier_address %></td>
+				<td><%= data[i].supplier_city %></td>
+				<td><%= data[i].supplier_state %></td>
+				<td><%= data[i].supplier_zipcode %></td>
+				<td><%= data[i].supplier_phone %></td>
+				<td><%= data[i].supplier_email %></td>
+				
+			</tr>	
+			<% }
+			}else{ %>
+			No User
+
+			<% } %>
+
+	</table>	
+	
+	<br><br><center>
+	<div style="-webkit-border-radius:10px; border-radius:10px; padding:10px; margin:5px;" class="reggieForm">
+	<form class="text-center" method="post" action="/updateSupplier">
+		<table style="color:white;">
+		<% if(data.length){
+
+		for(var i = 0; i < data.length; i++){%>
+
+					<input type="hidden" name="supplier_id" value="<%= data[i].supplier_id %>">	
+		<tr>
+		<td>name: </td>
+		<td>
+		<input type="text" name="name" value="<%= data[i].supplier_name %>"> 
+		</td></tr>
+		<tr>
+		<td>address: </td>
+		<td>
+		 <input type="text" name="address" value="<%= data[i].supplier_address %>"> 
+		</td>
+		</tr>
+		<tr>
+		<td>city: </td>
+		<td>
+		<input type="text" name="city" value="<%= data[i].supplier_city %>"> 
+		</td>
+		</tr>
+		<tr>
+		<td>state: </td> 
+		<td><input type="text" name="state" value="<%= data[i].supplier_state %>">
+		</td>
+		</tr>
+		<tr>
+		<td>zip: </td>    
+		 <td><input type="text" name="zip" value="<%= data[i].supplier_zipcode %>"> 
+		</td>
+		</tr>
+		<tr>
+		<td>phone: </td>      
+		<td><input type="text" name="phone" value="<%= data[i].supplier_phone %>"> 
+		</td>
+		</tr>
+		<tr>
+		<td>email: </td>     
+		<td><input type="email" name="email" value="<%= data[i].supplier_email %>"> 
+		</td>
+		</tr>
+
+			
+			
+		<% }
+		}else{ %>
+		No User
+
+		<% } %>
+		<tr style="width:100%; display:inline-block;">
+		<td style="width:45%; border:none;" >
+		<input type="submit" value="submit">
+		</td>
+		<td style="width:45%; border:none;">
+		<input type="submit" value="back"formmethod="get" formaction="/managerMenu#!/SupplierDetails">
+		</td>
+		</tr>
+		</table>
+	</form>
+	</div>
+	</center>
+	</div>
+
+
+  </body>
+</html>

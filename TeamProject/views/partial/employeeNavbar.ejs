@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+
+    
+   </style>
+</head>
+<body ng-app="employeeMenu">
+<div class="box">
+  <img src="http://static1.squarespace.com/static/53b9e922e4b0cdea486fc7ca/t/53c344dae4b0fb85d4199a8f/1405306076935/icon-4-track.png" width="60px"><b>Wipro IMS<b>
+   <h4><center>Employee Portal</center></h4>
+    <div>
+      <a style="float:right; margin-top:-30px;" href="/" data-toggle="tooltip" title="Logout"><span style="font-size:30px; color:white" class="glyphicon glyphicon-log-out"></span></a>
+    </div>
+  </div>
+  <br>
+    <div id="row" style="margin-top:-90px">
+            <div class="col-md-3 col-sm-4 col-lg-2">
+                <div class="left-navigation">
+                    
+                      <ul class="nav" id="side-menu" style="margin-top:-80px">
+                  
+                  
+                  <li style="padding: 70px 0 0">
+                        <a href="employeeMenu#!/dashboard" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color:black"></i>Dashboard</a>
+                    </li>
+                        <li class="list">
+                            <div class="dropdown">
+                                <i href="#!ManageInventory" class="fa fa-cubes" aria-hidden="true"></i>Manage Inventory <i class="fa fa-plus pull-right" aria-hidden="true" style="margin-top: -35px; margin-left:25px"></i>
+                            </div>
+                            <ul class="submenu hide">
+                                <li><a href="employeeCreateInventory">Add Inventory</a></li>
+                                <li><a href="employeeViewinventoryTables">Update Inventory</a></li>
+                                
+                                
+                            </ul>
+                        </li>
+                       
+                        <li><i class="fa fa-truck" aria-hidden="true"> <a href="employeeMenu#!/SupplierDetails" style="color: black">Suppliers Details  </a></i></li>
+                        
+                        
+                        <li style="padding: 70px 0 0">
+                        <a href="employeeMenu#!/aboutme" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-user" aria-hidden="true" style="color:black"></i>About Me</a>
+                        </li>
+                        <li>
+                        <a href="#!Help" class="waves-effect" style="color:black; margin-left:-10px"><i class="fa fa-question-circle" aria-hidden="true" style="color:black"></i>Help</a>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+              <div id="page-wrapper">
+            <div class="container-fluid" >
+                <div class="row bg-title">
+                 
+                    <div class="col-lg-10 col-sm-8 col-md-8 col-xs-12" style="margin-top: 10px">
+                        <a href="" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" style="color:white; background-color: blue">Welcome <%= user %> </a>
+                        <ol class="breadcrumb">
+                            <li><a href="employeeMenu#!/dashboard">Dashboard</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-10 col-sm-8 col-md-8 col-xs-12" ng-view=""></div>
+                    </div>
+              </div>
+            </div>
+
+
+            
+
+            <script>
+              window.onload=function(){
+$('.dropdown').click(function(){
+$(this).siblings(".submenu").toggleClass('hide');
+});
+}
+            </script>
+
+
+
+</body>
+</html>

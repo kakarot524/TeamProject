@@ -1,0 +1,225 @@
+<html>
+  <head>
+
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+
+  </head>
+  
+  <body>
+
+	<%include partial/mainNavBar%>
+    <div style="margin-left:250px;margin-top: -350px">
+
+
+	  <br><br><br>
+		<center><h1 style="text-align:center; right:20px; text-transform:uppercase;"> <%= tableName %> Page  </h1><br></center>
+		
+	<div style='padding: 40px;'>
+		<center>
+			<div style=' padding:5px; margin:5px; -webkit-border-radius:15px; border-radius:15px; display:table; background-color: black;'>
+	
+
+
+	<input style="float:left; -webkit-border-radius:5px; border-radius:5px;" type="text" id="myInput" onkeyup="myFunction()" placeholder=" Search by Name" title="Type in a name">
+
+
+
+	<table id="reggie" style="float:left;">
+		<tr class="header">
+		
+		<%	
+		var name_id = tableName + "_id";
+			
+			if(data1.length) { 
+				var tableValuesArray = [data.length];
+				var columnName; 
+				var goldenEgg;
+		%>
+			<tr>
+		<%		
+				data.push(tableName+"_supplier_name");
+				data.push(tableName+"_product_name");
+				data.push("Action");
+				for (var i = 0; i < data.length; i++) {
+					
+					tableValuesArray[i] = data[i];
+					
+					if(i == 0) { %>
+						<th><p>Id: </p></th>
+					<% } else if(i == 1) { %>
+						<th><p>Name: </p></th>
+					<% } else if(i == data.length - 4) { %>
+						<th><p>Stock Count: </p></th>
+					<% } else if(i == data.length - 3) { %>
+						<th><p>Supplier: </p></th>
+					<% } else if(i == data.length - 2) { %>
+						<th><p>Product Name: </p></th>
+					<% } else {
+					%>
+			
+				 <th><p> <%= tableValuesArray[i] %>: </p></th>	
+			
+			<% 	}//else	
+				columnName = tableValuesArray[0];
+				} //for 
+					goldenEgg = tableValuesArray[1];
+				%>
+			</tr>
+			<%	var nameid = [];
+				var count = 0;
+				for (var key in data1)
+				{	
+					nameid = [];
+					count = 0;
+					fields = data1[key]; %>
+				<tr>
+					<% for (var keys in fields) { 
+						nameid[count] = fields[keys];
+						count++;
+						
+						if(keys==columnName) {
+								var id=fields[keys];
+						}//if 
+						
+						if(keys==goldenEgg)
+						{
+							var goldenEgg2 = fields[keys];
+							
+							}//if
+						%>
+						
+							<td> <%= fields[keys] %> </td>	
+							<% var bridge = data;%>
+				<%  }//for
+					 %>	
+				
+				<!--  <td><button id="myBtn2">Edit</button></td> -->
+
+				<td><a href="/editInventory?id=<%= nameid[0] %>&table[name]=<%= tableName %>">Edit</a>
+
+				<a href="/deleteInventoryTableRow?id=<%= nameid[0] %>&table[name]=<%= tableName %>&column[name]=<%= columnName %>&variable[name]=<%= goldenEgg2 %>" id="deleteStock" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a></td>
+				
+
+					
+				</tr>
+			<%		
+				}//for
+			}
+			else
+			{ %>
+				<tr><td>No Inventory</td></tr> 
+<br>
+			<% } //end else 
+		%>
+		
+	</table>
+		
+			</div>
+		</center>
+
+
+		<button id="myBtn" style="padding:5px; color:white; text-align:center; background-color: #4169e1; font-size:18px; align-content:center;"">Add</button>
+
+	</div>
+		
+		<!-- Add Stock Button -->
+		<div id="myModal" class="modal">
+
+		  <!-- Add button content -->
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+				<%include addStock %>
+		  </div>
+		</div>
+		
+		
+	
+
+	<script>// Get the modal
+		var modal = document.getElementById('myModal');
+		var modal2 = document.getElementById('myModal2');
+		
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		var btn2 = document.getElementById("myBtn2");
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		var span2 = document.getElementsByClassName("close2")[0];
+		
+		// When the user clicks on the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}//btn
+		
+		/* btn2.onclick = function() {
+			modal2.style.display = "block";
+		}//btn2
+		*/
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}//span
+		
+		/* When the user clicks on <span> (x), close the modal
+		span2.onclick = function() {
+			modal2.style.display = "none";
+		}//span2
+			*/
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+				
+			}//if
+			
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+				
+			}//if
+		}//windown
+		
+	</script>
+
+	
+	 <!--search by product name-->
+
+	<script>
+	function myFunction() {
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("reggie");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }       
+	  }
+	}
+	</script>
+
+
+		
+	
+	
+	
+	</div>
+	<%include partial/mainFooter%>
+  </body>
+  
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head></head>
+<body>
+ <form method= "post" action="/WelcomeNewUser" >
+                        <p>
+                        <label>Username</label>
+                        <input type="text" placeholder="Enter your Username" required name = "username"/>
+                        </p>
+                        <p>
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                        </p>
+                        <p>
+                        <label>Re-type Password</label>
+                        <input type="password" id="confirm" placeholder="Re-enter password" name="confirm" required/>
+                        </p>
+                        <p>
+                        <label>First Name</label>
+                        <input type="text" placeholder="Enter your firstname" required name = "fname"/>
+                        </p>
+                        <p>
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Enter your lastname" required name = "lname"/>
+                        </p>
+                        <p>
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter a valid email" required name = "email"/>
+                        </p>
+                     
+                         <p>
+                            <input type="submit" value="Register"/>
+                        </p>
+                </form>
+                        <p>
+                        <form action="/">
+                               <input type="submit" value="back"/>
+                        </form> 
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	
+	<body>
+
+          <%
+                var statesArray = ["None", "Alabama","Alaska", "Arizona", "Arkansas", "California", "Colorado", 
+                "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", 
+                "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", 
+                "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
+                "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma",
+                "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", 
+                "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+        %>
+		
+        <br>
+        <center>
+		<div style="margin-left:10px; text-align:left; background-color:#c0c0c0; color:black; border:none;" class="reggieForm">
+	
+        <h3 style="font-weight:bold;"> ADD Supplier Info </h3>
+		  <form method= "post" action="/addSupplier" >
+                        <p>
+                            <label for="name"> Name:</label>
+                            <input style="background-color:white;" type="text" required name = "name"/>
+                        </p>
+                        <br>
+                        <p>
+                            <label for="address">Address:</label>
+                            <input style="background-color:white;" type="text" required name = "address"/>
+                        </p>
+                        <br>
+                        <p align="left" style="font-weight:bold; margin-left:10px; float:left; width:49%; display:inline;">City:</p>
+						<p align="left" style="font-weight:bold; float:left; width:49%; display:inline;">State:</p></p>
+                        <p style="margin-top:5px; float:left; width:100%; display:inline;">
+						<input style="background-color:white; width:48%;"type="text" required name = "city"/>
+                      
+                                <select style="border:3px solid blue; width:48%; height:50px; margin-left:10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;"  name="state">
+                                    <%
+                                        for(var j = 0; j < statesArray.length; j++)
+                                        { %>
+                                        <option style="width:325px" value= "<%= statesArray[j] %>" > <%= statesArray[j] %> </option>
+                                    <%        
+                                    } %>
+                                </select>
+                        </p>
+                        <br>
+                        <p>
+							<label for="Zipcode">Zipcode:</label>
+							<input style="background-color:white;" type="text" required name = "zip"/>
+                        </p>
+                        <br>
+                       <!-- Removing this to set default account--> 
+                       <p>
+							<label for="Phone Number">Phone Number:</label>
+							<input style="background-color:white;" type="text" required name = "phone"/>
+                        </p>
+                        <br>
+                        <p>
+                            <label for="Email">Email:</label>
+                        <input style="background-color:white;" type="email" required name = "email"/>
+                        </p>
+                        <br>
+                        
+                            <button type="submit" c <button style="width:100%;" >Add Supplier</button>
+                      
+
+
+                       
+                </form>
+					<!--
+                        <% 
+                        if(roleId == 2) 
+                        {%>
+
+                        <p>
+                            <form action="managerMenu#!/SupplierDetails">
+
+                               <input type="submit" class="btn btn-success" style="background-color:#4169e1 ; height:40px; width:150px; color:white; font-size:20px; align-content:center;" value="back"/>
+
+                            </form> 
+                        </p> 
+                       <%} else if(roleId == 1)
+                       {%>
+
+                        <p>
+                            <form action="employeeMenu#!/SupplierDetails">
+                               <input type="submit" class="btn btn-success" style="background-color: #4169e1; height:40px; width:150px; color:white; font-size:20px; align-content:center;" value="back"/>
+                            </form> 
+                        </p>
+						
+                        <%}%> 
+						-->
+
+                          
+               
+            
+        </div>
+		</center>
+
+                       
+	</body>
+</html>

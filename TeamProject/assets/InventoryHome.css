@@ -1,0 +1,47 @@
+
+.animatedButton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.addButton {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.addButton:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.viewButton {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.viewBbutton:hover {background-color: #e7e7e7;}
+
+.deleteButton {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.deleteButton:hover {
+    background-color: #555555;
+    color: white;
+
+}
+

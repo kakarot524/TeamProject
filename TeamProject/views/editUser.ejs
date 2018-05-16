@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<style>
+tr:last-child th:first-child {
+   -webkit-border-radius: 0px 0px 0px 15px;
+	border-radius: 0px 0px 0px 15px;
+	border-bottom: none;
+}
+
+tr:last-child td:last-child {
+   -webkit-border-radius: 0px 0px 15px 0px;
+	border-radius: 0px 0px 15px 0px;
+	border-bottom: none;
+}
+
+tr:first-child th:first-child {
+   -webkit-border-radius: 15px 0px 0px 0px;
+	border-radius: 15px 0px 0px 0px;
+}
+
+tr:first-child td:last-child {
+   -webkit-border-radius: 0px 15px 15px 0px;
+	border-radius: 0px 15px 0px 0px;
+	border-bottom: none;
+}
+
+	</style>
+</head>
+
+<body>
+
+  <% include partial/mainNavBar.ejs %>
+
+	<div style="margin-left:250px;margin-top: -300px">
+	
+	<div style="font-weight:bold; border:2px solid grey; -webkit-border-radius:15px; border-radius:15px;">
+	
+		<table>
+		<% if(data.length){
+
+		for(var i = 0; i < data.length; i++){%>
+			<tr><th style="width:45%" >Id: </th><td style="border-bottom: 2px solid grey; background-color:white; width:45%" ><%= data[i].user_id %></td></tr>
+			<tr><th style="width:45%" >IUser: </th><td style="border-bottom: 2px solid grey; background-color:white; width:45%"><%= data[i].user_username %></td></tr>
+			<tr><th style="width:45%" >IRole Id: </th><td style="border-bottom: 2px solid grey; background-color:white; width:45%"><%= data[i].role_id %></td></tr>
+			<tr><th style="width:45%" >Position: </th><td style="background-color:white; width:45%"><%= data[i].role_position %></td></tr>
+			
+		
+
+		<% }
+		}else{ %>
+		
+			No User
+
+		<% } %>
+
+	</table>
+	</div>
+	
+		<br>
+
+	<form method="post" action="/updateUser">
+
+		<% if(data.length){
+
+		for(var i = 0; i < data.length; i++){%>
+
+
+		  <input type="hidden" name="user_id" value="<%= data[i].user_id %>"> <br>
+		<% if(data[i].role_id == "1"){var roleDisplay = "Employee"}else if(data[i].role_id == "2"){var roleDisplay = "Manager"}%>
+		<% if(data[i].role_id == "3"){var roleDisplay = "New User"}else if(data[i].role_id == "4"){var roleDisplay = "Inactive"} %>
+
+
+			<select name="role_id">
+				<option value="<%= data[i].role_id %>">This users role is : <%= roleDisplay %></option>
+				<option value="1"> Employee </option>
+				<option value="2"> Manager </option>
+				<option value="3"> New User </option>
+				<option value="4"> Inactive <option>
+			</select>
+			<br>
+
+	
+		<% }
+		}else{ %>
+		No User
+
+		<% } %>
+		<br><table style="width:100%;"><tr style="width:100%; display: inline-block;">
+			<td><button class="btn btn-success text-center" style="margin-left:10px; color:white; text-align:center; right:20px; background-color: #4169e1; font-size:18px; type="submit">Submit</button><br>
+			</td>
+			<td><a href="managerMenu#!/displayUsers" class="btn btn-success text-center" style="margin-left:10px; color:white; text-align:center; right:20px; background-color: #4169e1; font-size:18px;">Back</a>
+			</td>
+			</tr></table>
+	</form>
+</div>
+
+		<% include partial/mainFooter.ejs %>
+</body>
+
+</html>

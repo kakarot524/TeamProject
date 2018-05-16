@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html >
+<head>
+	
+  <title>Account Registration</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  
+  <style >
+    body {
+    background: url(http://ft7q323msjfk2hgf49jihjgw.wpengine.netdna-cdn.com/wp-content/uploads/2015/03/Warehouse-background-image_low-res_gradient-750x486.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+    .box{
+      background-color: #2C3539;
+      color: #fff;
+      padding: 5px 5px;
+      font-family:new century schoolbook;
+      font-size: 20px;
+    }
+    *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+ 
+    body, html {
+    height: 100%;
+    }
+    .register_form {
+	margin:100px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: center;
+    -moz-box-flex: center;
+    -webkit-flex: center;
+    -ms-flex: center;
+    flex: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-align-items: center;
+    }
+    form {
+    background: #262626;
+    padding: 2em 1em;
+    font-family: helvetica, sans-serif;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    }
+    form label {
+  color: #fff;
+  margin: 0 3% .25em;
+  display: block;
+  font-family: helvetica, sans-serif;
+  text-align: left;
+}
+form input {
+  width: 100%;
+  padding: .7em .75em;
+  margin: 0 1% 1em;
+  font-size: 1.2em;
+  border: 2px solid #000;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+form button {
+  width: 40%;
+  margin: 1em 3% 0;
+  border: none;
+  background: #2B65EC;
+  padding: 0.5em 0;
+  font-size: 1.25em;
+  clear: both;
+  color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+
+.S-register {
+    width: 100%;
+	height: 30px;
+	background-color: black;
+	color: white;
+    margin-bottom: 20px;
+	-webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer
+  border: 2px solid #000;
+}
+
+select {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer
+  border: 2px solid #000;
+}
+
+  </style>
+  
+</head>
+
+<body>
+
+		<%
+			var statesArray = ["None", "Alabama","Alaska", "Arizona", "Arkansas", "California", "Colorado", 
+			"Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", 
+			"Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", 
+			"Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
+			"New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma",
+			"Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", 
+			"Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+		%>
+
+	<div class="box">
+		
+		<img src="http://static1.squarespace.com/static/53b9e922e4b0cdea486fc7ca/t/53c344dae4b0fb85d4199a8f/1405306076935/icon-4-track.png" width="60px"/><b>Wipro IMS</b>
+		
+		<h4><center>Welcome New User</center></h4>
+	</div>
+ 
+	<% if(1==1){
+		for(var i = 0; i < 1; i++){%>
+		<center><table>
+			<tr>
+			<th>
+		<div class="register_form">
+		
+			<form method= "post" action="/addUserInfo">
+				<p><input type="hidden" name="user_id" value="me"/>
+				<p><label for="username">Address</label>
+				<input type="text" placeholder="Enter a valid address"  name = "address" required /></p>
+				<p style="float:left; width:100%; display:inline; color:white;">
+				<p align="left" style="margin-left:10px; float:left; width:49%; display:inline; color:white;">City</p>
+				<p align="left" style="float:left; width:49%; display:inline; color:white;">State</p></p>
+				<p style="margin-top:5px; float:left; width:100%; display:inline;">
+				<input style="width:46%;"type="text" placeholder="Enter a valid city"  name = "city" required/>
+				
+					<select style="font-size: 1.2em; width:46%; height:50px; margin-left:10px;" name="state">
+					 <option style="color:#c0c0c0;" value="" disabled selected>State</option>
+					<%
+					for(var j = 0; j < statesArray.length; j++)
+					{ %>
+					  <option style="width: 100px" value= "<%= statesArray[j] %>" > <%= statesArray[j] %> </option>
+					<%        
+					} %>
+					</select></p>
+		  
+				  <p><label for="firstname">Zip</label>
+				  <input type="text" placeholder="Enter a valid zip"  name = "zip" required/>
+				  </p><p><label for="lastname">Phone</label>
+				   <input type="text" placeholder="Enter your phone" name = "phone" required/>  
+				   </p>
+				   <br><p>
+                            <select class="S-register" required name ="SecurityQuestion1" id="SecurityQuestion">
+                           <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+                            <option value="What is the street you grew up on?">What is the street you grew up on?</option>
+                            <option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+                            <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                            <option value="What city did you grow up in?">What city did you grow up in? </option>
+                            </select>
+                        
+                        <br>
+                            <input type="text" required name = "SecurityAnswer1" placeholder="Answer..." id="SecurityAnswer1"/>
+                        </p>
+                    
+							<br>
+                        <select class="S-register" id="SecurityQuestion2" required name ="SecurityQuestion2" style="margin-left:10px">
+						<option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+						<option value="What is the street you grew up on?">What is the street you grew up on?</option>
+						<option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+						<option value="What is the name of your first pet?">What is the name of your first pet?</option>
+						<option value="What city did you grow up in?">What city did you grow up in? </option>
+					</select>
+                       <br>
+                             <input type="text" required name = "SecurityAnswer2"  placeholder="Answer..." id="SecurityAnswer2" />
+                        
+                    
+                    
+                        <br>
+                             <select class="S-register" id="SecurityQuestion3" required name ="SecurityQuestion3">
+                    
+                    <option value="What is your mothers maiden name?">What is your mothers maiden name?</option>
+                    <option value="What is the street you grew up on?">What is the street you grew up on?</option>
+                    <option value="What is your grandfathers first name? ">What is your grandfathers first name? </option>
+                    <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                    <option value="What city did you grow up in?">What city did you grow up in? </option>
+                </select>
+                        <br>
+                              <input type="text" required name = "SecurityAnswer3"  placeholder="Answer..." id="SecurityAnswer3" />
+                        
+                    
+                
+            <!-- <button onclick="myFunction()" class="btn btn-success" style="background-color: lime-green; height:40px; width:250px; color:white; font-size:20px; align-content:center;">Complete Registration</button>
+			-->
+			<button class="btn btn-success" style="background-color: lime-green; height:40px; width:250px; color:white; font-size:20px; align-content:center;">Complete Registration</button>
+		</form> 
+  </div>
+	</th>
+	</tr>
+	</table></center>
+	
+		<% }
+		}else{ %>
+		No User
+		<% } %>
+
+<script>
+	function myFunction() {
+		alert("Welcome New User!!! Please Contact Manager to upgrade your status");
+	}
+</script>
+                                           
+           
+</body>
+</html>

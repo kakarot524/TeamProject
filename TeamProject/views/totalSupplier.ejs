@@ -1,0 +1,38 @@
+<!Doctype html>
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css" />
+		</head>
+	<body>
+
+
+		
+
+		<table>
+			
+			<tr>
+				<th> Name </th>
+				<th> Phone Number</th>
+				<th> E-Mail</th>
+			</tr>
+
+			<% if (data.length)
+			{
+				for(var j = 0; j < data.length; j++)
+				{ %>
+					<tr>
+						<td><%= data[j].supplier_name %></td>
+						<td><%= data[j].supplier_phone %></td>
+						<td><%= data[j].supplier_email %></td>
+					</tr>
+			  <%}
+			  
+			} //end if
+			else
+			{ %>
+				There are no Suppliers
+		 <% } %>
+		</table>
+		
+	</body>
+</html>

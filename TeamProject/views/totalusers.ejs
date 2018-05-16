@@ -1,0 +1,80 @@
+<!Doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css" />
+	</head>
+	<body>
+		
+		<div class="panel panel-default">
+                            <div class="panel-heading">
+                                Total Number of Users
+                            </div>
+
+		<table id="sort">
+			<tr class="header" style="height:15px">
+					<input style="margin-left:725px ; margin-top:7px" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by user ID.." title="Type in a name">
+			</tr>
+			<tr>
+				<th> Id </th>
+				<th>User ID </th>
+				<th>First Name </th>
+				<th>Last Name</th>
+				<th>Email </th>
+				<th>Role </th>
+		
+			</tr>
+
+
+			<% if(data.length){
+
+				for(var i = 0; i < data.length; i++){%>
+		
+			<tr>
+				<td><%= data[i].user_id %></td>
+				<td><%= data[i].user_username %></td>
+				<td><%= data[i].user_fname %></td>
+				<td><%= data[i].user_lname %></td>
+				<td><%= data[i].user_email %></td>
+				<td><%= data[i].role_position %></td>
+				
+	
+			</tr>	
+			<% }
+			}else{ %>
+			<h1>There are no Users.</h1>
+			<% } %>
+
+
+			
+
+
+
+		</table>
+	</div>
+
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("sort");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+	</body>
+
+
+</html>

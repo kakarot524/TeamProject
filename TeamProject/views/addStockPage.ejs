@@ -1,0 +1,83 @@
+<html>
+  <head>
+  
+  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+  </head>
+  
+  <body>
+  
+  <%include partial/mainNavBar%>
+
+	
+
+  <div style="margin-left: 250px;margin-top: -350px">
+	<center><h3 style="color:black;text-align:center; right:20px; text-transform:uppercase"> Add Stock to <%= name %>  </h3><br></center>
+	<center>
+	<div class="reggieForm">
+	<form method= "post" action="/addStockPage2" id="reggieForm">   
+
+		<% var field;
+		
+		if(obj.length){ %>
+		
+		<% for (var keys = 2;keys < obj.length; keys++) { 
+			if(keys < obj.length -3) { 
+			
+				if(keys == 2) { %>
+					 <p>name: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>
+				<% } else if(keys == obj.length -4) { %>
+						<p>stock count: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>		
+				<% } else {	%>
+				 <p>
+                  <%= obj[keys].column_name %>: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>
+					
+			<% }//elseif
+				} else { 
+				if(keys == obj.length -3) { %>
+			<br>
+				<p style="float:left;">stock supplier: <select style='color:black;' required name = "field<%= keys %>">
+					<% 
+					
+					for(var j = 0; j < obj1.length; j++){ %>
+			
+						<option  value="<%= obj1[j].supplier_id %>"> <%=obj1[j].supplier_name %> </option>
+				
+					<% }//for
+					}//if %> 
+				</select></p><br>
+			<% }//elseif		
+			}//for
+		}//else %>
+					  
+				<input type="hidden" required name ="num" value= <%= obj.length%> />
+				<input type="hidden" required name ="name" value="<%= name %>" />
+			<p>
+				<button type="submit" class="reggieForm" style='float: left;'> Add</button>
+			</p>
+		
+		</form>
+	</div>
+	</center>
+	</div>
+	<%include partial/mainFooter%>
+	</div>
+  <body>
+  
+</html>

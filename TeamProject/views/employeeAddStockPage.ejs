@@ -1,0 +1,125 @@
+<html>
+  <head>
+  
+  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+
+	<style>
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #fefefe;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	
+  </head>
+  
+  <body>
+  
+  <%include partial/employeeNavbar%>
+
+	
+
+  <div style="margin-left: 250px;margin-top: -350px">
+	<center><h3 style="color:black;text-align:center; right:20px; text-transform:uppercase"> Add Stock to <%= name %>  </h3><br></center>
+	
+	<div class="reggieForm">
+		
+	<form method= "post" action="/addStockPage2" id="reggieForm" >   
+
+		<% var field;
+		
+		if(obj.length){ %>
+		<tr>
+		<% for (var keys = 2;keys < obj.length; keys++) { 
+			if(keys < obj.length -3) { 
+			
+				if(keys == 2) { %>
+					 <p>name: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>
+				<% } else if(keys == obj.length -4) { %>
+						<p>stock count: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>		
+				<% } else {	%>
+				 <p>
+                  <%= obj[keys].column_name %>: 
+                        <input type="text" required name = "field<%= keys %>"/>
+                  </p>
+					
+			<% }//elseif
+				} else { 
+				if(keys == obj.length -3) { %>
+			
+	<br>
+				<p style="float:left;">stock supplier: <select style='color:black;' required name = "field<%= keys %>">
+					<% 
+					
+					for(var j = 0; j < obj1.length; j++){ %>
+			
+						<option value="<%= obj1[j].supplier_id %>"> <%=obj1[j].supplier_name %> </option>
+				
+					<% }//for
+					}//if %> 
+				</select></p>
+			<% }//elseif		
+			}//for
+		}//else %>
+					  
+				<input type="hidden" required name ="num" value= <%= obj.length%> />
+				<input type="hidden" required name ="name" value="<%= name %>" />
+			<p>
+				<input type="submit" value="add" class="reggieLink" style='float: left;'/>
+			</p>
+		</tr>
+		</form>
+	</table>
+	</div>
+</div>
+	<%include partial/mainFooter%>
+	</div>
+  <body>
+  
+</html>

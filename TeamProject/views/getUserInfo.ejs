@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <style >
+    body {
+    background: url(http://ft7q323msjfk2hgf49jihjgw.wpengine.netdna-cdn.com/wp-content/uploads/2015/03/Warehouse-background-image_low-res_gradient-750x486.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+    .box{
+      background-color: #2C3539;
+      color: #fff;
+      padding: 5px 5px;
+      font-family:new century schoolbook;
+      font-size: 20px;
+  }
+    
+    *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+ 
+    body, html, .register_form{
+    height: 100%;
+    }
+    .register_form {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: center;
+    -moz-box-flex: center;
+    -webkit-flex: center;
+    -ms-flex: center;
+    flex: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-align-items: center;
+    }
+    form {
+    background: #262626;
+    padding: 2em 1em;
+    font-family: helvetica, sans-serif;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top:90px;
+    margin-left: 460px;
+    width:30%;
+    }
+   
+form input {
+  width: 100%;
+  padding: .7em .75em;
+  margin: 0 1% 1em;
+  font-size: 1.2em;
+  border: 2px solid #000;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+  </style>
+  
+</head>
+
+<body>
+<div class="box">
+  <img src="http://static1.squarespace.com/static/53b9e922e4b0cdea486fc7ca/t/53c344dae4b0fb85d4199a8f/1405306076935/icon-4-track.png" width="60px"><b>Wipro IMS<b>
+   <h4><center>User Info</center></h4>
+  </div>
+	
+
+
+
+<form method="post" action="/changePassword" style="color: white">
+
+<% if(data.length){
+for(var i = 0; i < data.length; i++){%>
+			<input type="hidden" name="user_id" value="<%= data[i].user_id %>">	
+			<input type="hidden" name="question1" value="<%= data[i].security_question1 %>">	
+			<input type="hidden" name="question2" value="<%= data[i].security_question2 %>">	
+			<input type="hidden" name="question3" value="<%= data[i].security_question3 %>">	
+<%= data[i].security_question1 %> 	<br><input type="text" name="answer1"> <br>
+<%= data[i].security_question2 %>	<br><input type="text" name="answer2"> <br>
+<%= data[i].security_question3 %>	<br><input type="text" name="answer3"> <br>
+		
+	
+<% }
+}else{ %>
+No User
+<% } %>
+<p>
+<input type="submit" value="Submit" style="background-color:blue; color: white"> <br>
+<p>
+</form>
+<div>
+</body>
+
+</html>

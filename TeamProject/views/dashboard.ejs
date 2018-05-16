@@ -1,0 +1,348 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+   
+  </head>
+
+
+  <body>
+    
+<br>
+    <div class="main"  style="background-color:#F2F2F2; width:100%; height:150%; margin-left:0px; margin-top:-47px;">
+      <div class="row" >
+      <div class="text-center col-lg-12 col-sm-6 col-xs-12" style="margin-top:18px;">
+                    <div class="col-lg-4 col-md-6" >
+                        <div class="panel panel-red" style="background-color: blue;">
+                            <div class="panel-heading">
+                                <div style="color:white;" class="row">
+                                    <div class="col-xs-3">
+                                        <i style="color:white;" class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"> <%= Messages.length %> </div>
+                                        <div>Comments</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div style="color:blue; background-color: white;" class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+					      <div class="col-lg-4 col-md-6">
+                        
+                        <div class="panel panel-green" style="background-color:grey;">
+                        
+                            <div class="panel-heading">
+                                <div style="color:white;" class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><%= User.length %></div>
+                                        <div>Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="managerMenu#!/Users">
+                                <div style="color:grey ; background-color: white;" class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    
+                </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-red" style="background-color:black;">
+                            <div class="panel-heading" >
+                                <div style="color:white;" class="row">
+                                    <div class="col-xs-3">
+                                        <i style="color:white;" class="fa fa-truck fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><%= Supplier.length %></div>
+                                        <div>Suppliers</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/managerMenu#!/SupplierDetails">
+                                <div style="color:black; background-color: white;" class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+              
+              </div>
+<br>
+<div class="row">
+  <div class="text-center col-lg-12 col-sm-6 col-xs-12" style="margin-left: 25px;"><br><br>
+      <div class="text-center col-lg-4 col-sm-6 col-xs-12" style="background-color:white; width:300px; height:100%;  margin-left:10px;  font:sans-serif;">
+
+    <table style="margin-top: 15px; margin-bottom: 15px;">
+      <tr>
+        <th> Inventory Category </th>
+        <th> Item </th>
+      </tr>
+
+      <% if (Inventory.length)
+      {
+        for(var j = 0; j < Inventory.length; j++)
+        { %>
+          <tr>
+            <td><%= Inventory[j].InventoryCategory %></td>
+            <td><%= Inventory[j].Item %></td>
+            
+          </tr>
+        <%}
+        
+      } //end if
+      else
+      { %>
+        <!--There is no inventory available-->
+     <% } %>
+    </table>    
+  </div>
+
+
+<div class="text-center col-lg-4 col-sm-6 col-xs-12" style="background-color: white; width:300px;height:100%; margin-left: 45px">
+        <table style="margin-top: 15px; margin-bottom: 15px;">
+      <tr>
+        <th> Username</th>
+        <th> Role </th>
+        
+      </tr>
+
+      <% if (User.length)
+      {
+        for(var j = 0; j < User.length; j++)
+        { %>
+          <tr>
+            <td><%= User[j].name %></td>
+            <td><%= User[j].role%></td>
+          
+            
+          </tr>
+        <%}
+        
+      } //end if
+      else
+      { %>
+        <!--There is no inventory available-->
+     <% } %>
+    </table>    
+
+</div>
+
+<div class="text-center col-lg-4 col-sm-6 col-xs-12" style="background-color:white;width:300px;height: 100%;margin-left:45px">
+    <table style="margin-top: 15px; margin-bottom: 15px;" >
+      <tr>
+        <th> Supplier</th>
+        
+      </tr>
+
+      <% if (Supplier.length)
+      {
+        for(var j = 0; j < Supplier.length; j++)
+        { %>
+          <tr>
+            <td><%= Supplier[j].supplier_name %></td>
+          
+            
+          </tr>
+        <%}
+        
+      } //end if
+      else
+      { %>
+        <!--There is no inventory available-->
+     <% } %>
+    </table>   
+
+</div>
+
+</div>
+<br><br><br>
+
+<div class="panel text-center col-lg-10 col-sm-6 col-xs-12" style="background-color: white; margin-top:40px ; margin-bottom:15px ; width:1040px ;  height:275px; margin-left: 30px; overflow:auto;" >
+
+  <p style="background-color: white; font-size:25px; color: black; font:sans-serif;"><b>
+   RECENT MESSAGES<b>
+  </p>
+
+    
+     <% if (Messages.length)
+      {
+        for(var k = 0; k < Messages.length; k++)
+        { %>
+            <br>
+            <p align="left" style="font-size: 25px;">
+            <%= Messages[k].contact_name %>   
+            </p>
+            <p align="left" style="font-size: 13px; color:grey;">
+            <%= Messages[k].contact_created%>
+            </p>             
+            <p align="left" style="font-size: 13px; color:grey;">
+            <%= Messages[k].contact_email %> 
+            </p>           
+            <p align="left" style="font-size: 13px; color:black;">
+            <%= Messages[k].contact_message%>
+            </p>
+            <p align="left">
+            <a type="button" class="btn btn-info" id="myBtn<%=k%>">Reply</a>
+            <a type="button" class="btn btn-info" href="/messageRead?message=<%=Messages[k].contact_id%>"> Mark as Read</a>
+            </p>
+            <p> <div class="line">  </div></p>
+
+            <div id="myModal<%=k%>" class="modal<%=k%>">
+              <div class="modal-content<%=k%>">
+                 <span class="close<%=k%>">&times;</span>
+                   <p>Reply Email</p>
+                   <form>
+                    <p align="left">
+                    Email:
+                    <input type="text" required value="<%= Messages[k].contact_email %>" style="width:500px"/>
+                    </p>
+                    <p align="left">
+                    Subject:
+                    <input type="text" required value="WIPRO IMS RESPONSE" style="width:485px"/>
+                    </p>
+                    <p align="left">
+                    Message:
+                    <p align="left"><textarea rows="3" cols="70" required ></textarea></p>
+                    </p>                                        
+                    <p>
+
+                    <a href="/messageRead?message=<%=Messages[k].contact_id%>" onclick="Confirmation()" class="btn btn-info"> Send </a>
+                    </p>
+                   </form>
+              </div>
+           </div>
+           
+
+  <script>
+    var modal<%=k%> = document.getElementById('myModal<%=k%>');
+    var btn<%=k%> = document.getElementById("myBtn<%=k%>");
+    var span<%=k%> = document.getElementsByClassName("close<%=k%>")[0];
+
+    window.addEventListener('click', outsideClick);
+
+    btn<%=k%>.onclick = function(){
+      modal<%=k%>.style.display="block";
+    }
+    span<%=k%>.onclick=function(){
+      modal<%=k%>.style.display="none";
+    }
+    /*window.onclick = function(event){
+      console.log(event.target);
+      if(event.target == modal<%=k%>){
+        modal<%=k%>.style.display = "none";
+      }
+    }*/
+    function outsideClick(e)
+    {
+      if(e.target == modal<%=k%>){
+        modal<%=k%>.style.display= 'none';
+      }
+    }
+    function Confirmation(){
+      alert("Reply Sent!");
+    }
+  </script>
+
+   <style>
+    .line{
+      width:100%; 
+      height:40px;
+      border-bottom: 1px solid black;
+    }
+
+    .modal<%=k%>{
+      display:none;
+      position:fixed;
+      z-index:1;
+      padding-top:100px;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      overflow:fixed;
+      background-color:rgb(0,0,0);
+      background-color:rgba(0,0,0,0.4);
+    }
+    .modal-content<%=k%>{
+      background-color:#fefefe;
+      margin:auto;
+      padding:20px;
+      border:1px solid #888;
+      width:50%;
+    }
+    .close<%=k%>{
+      color:#aaaaaa;
+      float:right;
+      font-size:28px;
+      font-weight:bold;
+      margin-top:-10px;
+    }
+    .close<%=k%>:hover,
+    .close<%=k%>:focus{
+      color:#000;
+      text-decoration:none;
+      cursor:pointer;
+    }
+  </style>
+
+        
+            
+          
+        <%}
+        
+      } //end if
+      else
+      { %>
+        <p align="left">
+          You have no unread messages.
+        </p>
+     <% } %>
+     
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+  </body>
+</html>

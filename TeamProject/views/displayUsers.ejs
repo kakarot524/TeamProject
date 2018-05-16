@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/manager.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/inventoryForm.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/viewInventory.css"/>
+	
+	<style>
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #c0c0c0;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 45%;
+			-webkit-border-radius:15px; 
+			border-radius:15px;
+		}
+
+		/* The Close Button */
+		.close {
+			color: black;
+			float: right;
+			font-size: 50px;
+			font-weight: bold;
+			margin-top: -15px;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	
+  </head>
+
+  <body>
+
+		<div class="panel panel-default">
+									
+				<div class="panel-heading">
+						Current User List
+				</div>
+
+		<table id="sort">
+
+		<tr class="header" style="height:15px">
+			<input style="margin-left:755px ; margin-top:7px" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by user ID.." title="Type in a name">
+		</tr>
+			<tr>
+				<th> User Id </th>
+				<th>UserName </th>
+				<th>FirstName </th>
+				<th>LastName </th>
+				<th>Email </th>
+				<th>Role</th>
+				<th>Phone</th>
+
+				<th>Action</th>
+			</tr>
+
+
+
+		<% if(data.length){
+				for(var i = 0; i < data.length; i++){%>
+			<tr>
+				<td><%= data[i].user_id %></td>
+				<td><%= data[i].user_username %></td>
+				<td><%= data[i].user_fname %></td>
+				<td><%= data[i].user_lname %></td>
+				<td><%= data[i].user_email %></td>
+				<td><%= data[i].role_position %></td>
+				<td><%= data[i].user_phone %></td>
+
+
+				<td><a href="/editUser?id=<%= data[i].user_id %>"><span name="edit" class="glyphicon glyphicon-edit"></span></a>
+					<a href="/deleteUser?id=<%= data[i].user_id %>"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+			</tr>	
+		
+		<% }
+			} else { %>
+		
+		<h1>There are no Confirmed Users</h1>
+		
+		<% } %>
+
+		</div>
+		
+		</table>
+
+		<br><br>
+
+		</div>
+		<center><table style="width:50%;">
+		<tr><td><br>
+			<button class="btn btn-success text-center" id="myBtn"style="color:white; text-align:center; right:20px; background-color: #4169e1; font-size:18px;">Create New User</button>
+			<!-- <a id="myBtn" class="btn btn-success text-center" style="color:white; text-align:center; right:20px; background-color: #4169e1;height:40px; font-size:18px; align-content:center;" href="/newUserForm"> Create New User </a> 
+		--></td>
+		<br>
+			
+		<td><center>
+			<label>Users with unsaved personal info:</label><br>
+			<a class="btn btn-success text-center" style="margin-bottom:10px; color:white; text-align:center; right:20px; background-color: #4169e1; font-size:18px;" href="#!viewPendingUsers">View</a> 
+		</center></td>
+		</tr>
+		</table></center>
+		
+		
+		<!-- Add Users Button -->
+		<div id="myModal" class="modal">
+
+		  <!-- Add button content -->
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+				<%include newUserForm %>
+		  </div>
+		</div>
+		
+		
+
+
+	<script>// Get the modal
+		var modal = document.getElementById('myModal');
+		var modal2 = document.getElementById('myModal2');
+		
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		var btn2 = document.getElementById("myBtn2");
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		var span2 = document.getElementsByClassName("close2")[0];
+		
+		// When the user clicks on the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}//btn
+		
+		/* btn2.onclick = function() {
+			modal2.style.display = "block";
+		}//btn2
+		*/
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}//span
+		
+		/* When the user clicks on <span> (x), close the modal
+		span2.onclick = function() {
+			modal2.style.display = "none";
+		}//span2
+			*/
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+				
+			}//if
+			
+			if (event.target == modal2) {
+				modal2.style.display = "none";
+				
+			}//if
+		}//windown
+		
+	</script>
+
+
+	<script>
+		function myFunction() {
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("sort");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+			  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}       
+		  }
+		}
+	</script>
+
+
+  </body>
+
+</html>

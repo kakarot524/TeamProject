@@ -1,0 +1,130 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/tablestyle.css"/>
+   
+	</head>
+
+
+	<body>
+		
+   
+		<div class="row">
+			<div class="text-center col-lg-12 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-sm-6 col-xs-12" href="#!ManageInventory">
+                        <div class="white-box analytics-info">
+                          <table>
+                            <tr>
+                              <td>
+                          <span class="glyphicon glyphicon-signal"></span>
+                              </td>
+                              <td>
+                            <h3 class="box-title">Inventory</h3>
+                          </td>
+                        </tr>
+                      </table>
+                            <ul class="list-inline two-part">
+
+                                
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><b><%= Inventory.length %><b></span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <table>
+                            <tr>
+                              <td>
+                          <span class="glyphicon glyphicon-signal"></span>
+                              </td>
+                              <td>
+                            <h3 class="box-title">Suppliers</h3>
+                          </td>
+                        </tr>
+                      </table>
+                            <ul class="list-inline two-part">
+
+                                
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"><%= Supplier.length %></span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                   
+                </div>
+              </div>
+
+<div class="row">
+  <div class="text-center col-lg-12 col-sm-6 col-xs-12">
+      <div class="text-center col-lg-4 col-sm-6 col-xs-12">
+
+    <table>
+      <tr>
+        <th> Inventory Category </th>
+        <th> Item </th>
+      </tr>
+
+      <% if (Inventory.length)
+      {
+        for(var j = 0; j < Inventory.length; j++)
+        { %>
+          <tr>
+            <td><%= Inventory[j].InventoryCategory %></td>
+            <td><%= Inventory[j].Item %></td>
+
+            
+          </tr>
+        <%}
+        
+      } //end if
+      else
+      { %>
+        There is no inventory available
+     <% } %>
+    </table>    
+  </div>
+<div class="text-center col-lg-4 col-sm-6 col-xs-12">
+    <table>
+      <tr>
+        <th> Supplier</th>
+        
+      </tr>
+
+      <% if (Supplier.length)
+      {
+        for(var j = 0; j < Supplier.length; j++)
+        { %>
+          <tr>
+            <td><%= Supplier[j].supplier_name %></td>
+          
+            
+          </tr>
+        <%}
+        
+      } //end if
+      else
+      { %>
+        There is no inventory available
+     <% } %>
+    </table>   
+
+</div>
+
+</div>
+</div>
+
+	</body>
+</html>

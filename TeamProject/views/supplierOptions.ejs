@@ -1,0 +1,68 @@
+<!Doctype html>
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="../assets/tablestyle.css" />
+		</head>
+	<body>
+	
+
+		<table>
+			<tr>
+				<th> Supplier </th>
+				<th> Inventory Category </th>
+				<th> Name </th>
+				<th> Price </th>
+				<th> Stock Count </th>
+				<th> Inventory Value </th>
+				<th> Created Date </th>
+			</tr>
+
+			<% if (inventoryOptions.length)
+			{
+				var supplier;
+				var supplier2;
+				var supplierArray = [inventoryOptions.length];
+				console.log("supplierArray " +supplierArray);
+				for(var j = 0; j < inventoryOptions.length; j++)
+				{ %>
+					<tr>
+						<td><%= inventoryOptions[j].supplier %></td>
+						<td><%= inventoryOptions[j].product %></td>
+						<td><%= inventoryOptions[j].table_name %></td>
+						<td><%= inventoryOptions[j].price %></td>
+						<td><%= inventoryOptions[j].stock_count %></td>
+						<td><%= inventoryOptions[j].total_inventory_value %></td>
+						<td><%= inventoryOptions[j].created_date %></td>
+						
+					</tr>
+			  <%
+			  		supplier = inventoryOptions[j].supplier;
+			  			console.log("supplier value: "+supplier);
+			  			supplierArray[j] = inventoryOptions[j];
+			  			console.log("supplierArray :" +supplierArray);
+			  /*			
+			  			for(var k = 0; k < inventoryOptions.length; k++)
+			  			{
+			  				supplier2 = inventoryOptions[k].supplier;
+			  				console.log("supplier2 value : "+supplier2);
+			  				if(supplier == supplier2)
+							{
+								console.log("supplier 1: "+supplier+ " is equal to supplier 2 : "+supplier2);
+							}
+							else
+							{
+								console.log("supplier 1: "+supplier+ " is NOT equal to supplier 2: "+supplier2);
+							}
+			  			}
+			  	*/			
+				}//end for
+			  
+			} //end if
+			else
+			{ %>
+				There is no inventory available
+		 <% } %>
+		</table>
+		
+	</body>
+</html>
